@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"></link>
+        <title>Massachusetts Population</title>
+        <!-- Tutorial from https://www.youtube.com/watch?v=sE08f4iuOhA -->
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <script>
+            let myChart  = document.getElementById('myChart').getContext('2d');
+            
+            Chart.defaults.global.defaultFontFamily  = 'Verdana';
+            Chart.defaults.global.defaultFontSize  = 15;
+            Chart.defaults.global.defaultFontColor  = 'black';
+
+            let populationChart = new Chart(myChart, {
+                type: 'horizontalBar', // bar, pie, line, doughnut, radar, polarArea
+                data: {
+                    labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+                    datasets: [{
+                        label: 'Population',
+                        data: [
+                            617594,
+                            181045,
+                            153060,
+                            106519,
+                            105162,
+                            95072
+                        ],
+                        backgroundColor: [
+                            'green',
+                            'purple',
+                            'blue',
+                            'yellow',
+                            'red',
+                            'pink'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#777',
+                        hoverBorderColor: 'black'
+                    }]
+                },
+                options: {
+                    title:  {
+                        display: true,
+                        text: 'Largest Cities in Massachusetts',
+                        fontSize: 25
+                    },
+                    legend: {
+                        display: false,
+                        position: 'right'
+                    },
+                    layout: {
+                        padding: {
+                            left: 50,
+                            right:  0,
+                            bottom: 0,
+                            top: 0
+                        }
+                    },
+                    tooltips:  { // labels when hover
+                        enabled: true // default is true
+                    }
+                }
+            });
+
+        </script>
+    </body>
+</html>
